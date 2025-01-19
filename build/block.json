@@ -1,0 +1,70 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "b-blocks/test-purpose",
+  "version": "1.0.0",
+  "title": "profile card",
+  "category": "widgets",
+  "description": "Short description of the Test Purpose",
+  "keywords": [
+    "Test Purpose"
+  ],
+  "textdomain": "b-blocks",
+  "attributes": {
+    "alignment": {
+      "type": "string",
+      "default": "center"
+    },
+    "profile": {
+      "type": "object",
+      "default": {
+        "name": "Shihab Shamim",
+        "image": "https://i.ibb.co.com/4RBL613/1714662976645-2.jpg",
+        "designation": "Senior Product Designer",
+        "skills": [
+          "UI/UXL",
+          "Branding",
+          "Motion"
+        ],
+        "description": "Creative designer with 5+ years of experience in digital product design and brand identity.",
+        "projects": "1.2k",
+        "followers": "8.5k",
+        "following": "4.5k",
+        "button": {
+          "follow": "Follow",
+          "message": "Message"
+        }
+      }
+    },
+    "isShow": {
+      "type": "boolean",
+      "default": true
+    },
+    "cardStyle": {
+      "type": "object",
+      "default": {
+        "width": "400px",
+        "height": "900px"
+      }
+    },
+    "cardBackground": {
+      "type": "string",
+      "default": "#1e293b"
+    }
+  },
+  "supports": {
+    "align": [
+      "wide",
+      "full"
+    ],
+    "html": false
+  },
+  "example": {
+    "attributes": {}
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./view.css",
+  "render": "file:./render.php",
+  "viewScript": "file:./view.js"
+}
