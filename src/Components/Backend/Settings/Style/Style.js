@@ -5,7 +5,7 @@ import {
   __experimentalBoxControl as BoxControl,
   __experimentalUnitControl as UnitControl
 } from "@wordpress/components";
-import { ColorsControl } from "../../../../../../bpl-tools/Components";
+import { Background, ColorsControl } from "../../../../../../bpl-tools/Components";
 import { ColorPicker } from "@wordpress/components";
 
 const Style = ({ attributes, setAttributes }) => {
@@ -50,8 +50,12 @@ const Style = ({ attributes, setAttributes }) => {
 	isUnitSelectTabbable
 	value={ cardStyle.height } />
 
+  <label>Card Background Color</label>
+
 <ColorPicker
-	color={ cardBackground }
+	color={cardBackground}
+  onChangeComplete={(color) => setAttributes({ cardBackground: color.hex }) }
+  label={__("Background Color", "b-blocks")} 
 />
 
        
