@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			<div className='cardsContainer'>
 			{
-          profile.map((pro,index) =><ProfileCard key={index} pro={pro} attributes={attributes} ></ProfileCard>)
+          profile.map((pro,index) =><ProfileCard view={true} key={index} pro={pro} attributes={attributes} ></ProfileCard>)
           
         }
 

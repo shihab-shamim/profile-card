@@ -862,6 +862,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "cardsContainer"
     }, profile.map((pro, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Common_ProfileCard__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      view: true,
       key: index,
       pro: pro,
       attributes: attributes

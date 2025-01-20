@@ -20,6 +20,12 @@ const General = ({ attributes, setAttributes }) => {
 
   return (
     <>
+      <PanelBody className='bPlPanelBody' title={__('Profile Cards', 'b-blocks')} initialOpen={false}>
+      
+       
+
+      </PanelBody>
+
     {/* <PanelBody className='bPlPanelBody' title={__('Profile Info', 'b-blocks')} initialOpen={false}>
      
      <TextControl
