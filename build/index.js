@@ -534,6 +534,9 @@ const Edit = props => {
     setAttributes,
     clientId
   } = props;
+  const {
+    profile
+  } = attributes;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Settings_Settings__WEBPACK_IMPORTED_MODULE_2__["default"], {
     attributes,
     setAttributes
@@ -543,10 +546,15 @@ const Edit = props => {
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Common_Style__WEBPACK_IMPORTED_MODULE_3__["default"], {
     attributes: attributes,
     id: `block-${clientId}`
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Common_ProfileCard__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "cardsContainer"
+  }, Array.isArray(profile) && profile.map((pro, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Common_ProfileCard__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    key: index,
+    pro: pro,
+    index: index,
     attributes: attributes,
     setAttributes: setAttributes
-  })));
+  })))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Edit);
 
@@ -591,137 +599,55 @@ const General = ({
   const {
     purposeType,
     profile,
-    isShow
+    isShow,
+    layout
   } = attributes;
   // const {image}=profile
 
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Profile Info', 'b-blocks'),
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Profile Cards LayOut', 'b-blocks'),
     initialOpen: false
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
-    label: "Profile Image URL",
-    value: attributes.profile.image || "" // Access the nested value
-    ,
-    onChange: newImage => setAttributes({
-      profile: {
-        ...profile,
-        image: newImage
-      }
-    })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.MediaUploadCheck, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.MediaUpload, {
-    onSelect: newImage => setAttributes({
-      profile: {
-        ...profile,
-        image: newImage.url // Save the image URL
-      }
-    }),
-    allowedTypes: ['image'],
-    value: profile.image || "",
-    render: ({
-      open
-    }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
-      isPrimary: true,
-      onClick: open
-    }, "Upload Image")
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
-    label: "Profile Name",
-    value: profile.name || "" // Access the nested value
-    ,
-    onChange: newName => setAttributes({
-      profile: {
-        ...profile,
-        name: newName
-      }
-    })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
-    label: "Profile Designation",
-    value: profile.designation || "" // Access the nested value
-    ,
-    onChange: newDesignation => setAttributes({
-      profile: {
-        ...profile,
-        designation: newDesignation
-      }
-    })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
-    label: "Profile Projects",
-    value: profile.projects || "" // Access the nested value
-    ,
-    onChange: newProjects => setAttributes({
-      profile: {
-        ...profile,
-        projects: newProjects
-      }
-    })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
-    label: "Profile Followers",
-    value: profile.followers || "" // Access the nested value
-    ,
-    onChange: newfollowers => setAttributes({
-      profile: {
-        ...profile,
-        followers: newfollowers
-      }
-    })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
-    label: "Profile Following",
-    value: profile.following || "" // Access the nested value
-    ,
-    onChange: newfollowing => setAttributes({
-      profile: {
-        ...profile,
-        following: newfollowing
-      }
-    })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextareaControl, {
-    label: "Profile Description",
-    rows: 4,
-    value: profile?.description,
-    onChange: newdescription => setAttributes({
-      profile: {
-        ...profile,
-        description: newdescription
-      }
-    })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Profile Skills"), profile?.skills.map((skill, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
-    key: index,
-    label: `Skill-${index + 1}`,
-    value: skill,
-    onChange: newSkill => setAttributes({
-      profile: {
-        ...profile,
-        skills: profile.skills.map((s, i) => i === index ? newSkill : s)
-      }
-    })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ButtonGroup, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    isPrimary: layout === 2,
+    isSecondary: layout !== 2,
+    onClick: () => {
+      setAttributes({
+        layout: 2
+      });
+    }
+  }, "2Column"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    isPrimary: layout === 3,
+    isSecondary: layout !== 3,
+    onClick: () => {
+      setAttributes({
+        layout: 3
+      });
+    }
+  }, "3 Column"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
     isPrimary: true,
-    onClick: () => setAttributes({
-      profile: {
-        ...profile,
-        skills: profile.skills.filter((_, i) => i !== index)
-      }
-    })
-  }, "Delete"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FormTokenField, {
-    label: "Add Skill",
-    value: profile.skills,
-    suggestions: profile.skills,
-    onChange: newSkills => setAttributes({
-      profile: {
-        ...profile,
-        skills: newSkills
-      }
-    })
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Flex, {
-    align: "center",
-    justify: "center",
-    gap: 2
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FormToggle, {
-    checked: isShow,
-    onChange: () => setAttributes({
-      isShow: !isShow
-    })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Show Profile Button ", isShow)));
+    onClick: () => {
+      const newProfileCard = {
+        name: "Shihab Shamim",
+        image: "https://i.ibb.co.com/4RBL613/1714662976645-2.jpg",
+        designation: "Senior Product Designer",
+        skills: ["UI/UXL", "Branding", "Motion"],
+        description: "Creative designer with 5+ years of experience in digital product design and brand identity.",
+        projects: "16.2k",
+        followers: "86.5k",
+        following: "46.5k",
+        button: {
+          follow: "Follow",
+          message: "Message"
+        }
+      };
+
+      // Ensure profile is treated as an array and add the new card
+      setAttributes({
+        profile: Array.isArray(profile) ? [...profile, newProfileCard] : [newProfileCard]
+      });
+    }
+  }, "Add Card"));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (General);
 
@@ -1111,12 +1037,39 @@ __webpack_require__.r(__webpack_exports__);
 const ProfileCard = ({
   view,
   attributes,
-  setAttributes
+  setAttributes,
+  pro,
+  index
 }) => {
   const {
     profile,
     isShow
   } = attributes;
+
+  // Helper function to update the profile at a specific index
+  const updateProfileAtIndex = (key, value) => {
+    const updatedProfiles = [...profile];
+    updatedProfiles[index] = {
+      ...updatedProfiles[index],
+      [key]: value
+    };
+    setAttributes({
+      profile: updatedProfiles
+    });
+  };
+  const updateNestedProfileAtIndex = (parentKey, key, value) => {
+    const updatedProfiles = [...profile];
+    updatedProfiles[index] = {
+      ...updatedProfiles[index],
+      [parentKey]: {
+        ...updatedProfiles[index][parentKey],
+        [key]: value
+      }
+    };
+    setAttributes({
+      profile: updatedProfiles
+    });
+  };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "container"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -1127,153 +1080,106 @@ const ProfileCard = ({
     className: "avatar-wrapper"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     className: "avatar",
-    src: profile.image,
+    src: pro.image,
     alt: "Profile Pic"
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "profile-info"
   }, view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
     className: "name"
-  }, profile?.name) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+  }, pro?.name) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     className: "name",
-    onChange: newName => setAttributes({
-      profile: {
-        ...profile,
-        name: newName
-      }
-    }),
     tagName: "h2",
-    value: profile?.name,
-    placeholder: 'Your Name...'
+    value: pro?.name,
+    onChange: newName => updateProfileAtIndex('name', newName),
+    placeholder: "Your Name..."
   }), view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "title"
-  }, profile?.designation) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+  }, pro?.designation) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     className: "title",
-    onChange: newDesignation => setAttributes({
-      profile: {
-        ...profile,
-        designation: newDesignation
-      }
-    }),
     tagName: "p",
-    value: profile?.designation,
-    placeholder: 'Your designation...'
+    value: pro?.designation,
+    onChange: newDesignation => updateProfileAtIndex('designation', newDesignation),
+    placeholder: "Your designation..."
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "stats"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "stat"
   }, view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "stat-value"
-  }, profile?.projects) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+  }, pro?.projects) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     className: "stat-value",
-    onChange: newProjects => setAttributes({
-      profile: {
-        ...profile,
-        projects: newProjects
-      }
-    }),
     tagName: "span",
-    value: profile?.projects,
-    placeholder: 'projects...'
+    value: pro?.projects,
+    onChange: newProjects => updateProfileAtIndex('projects', newProjects),
+    placeholder: "projects..."
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "stat-label"
   }, "Projects")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "stat"
   }, view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "stat-value"
-  }, profile?.followers) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+  }, pro?.followers) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     className: "stat-value",
     tagName: "span",
-    value: profile?.followers,
-    onChange: newfollowers => setAttributes({
-      profile: {
-        ...profile,
-        followers: newfollowers
-      }
-    }),
-    placeholder: 'followers...'
+    value: pro?.followers,
+    onChange: newFollowers => updateProfileAtIndex('followers', newFollowers),
+    placeholder: "followers..."
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "stat-label"
   }, "Followers")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "stat"
   }, view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "stat-value"
-  }, profile?.following) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+  }, pro?.following) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     className: "stat-value",
     tagName: "span",
-    value: profile?.following,
-    onChange: newfollowing => setAttributes({
-      profile: {
-        ...profile,
-        following: newfollowing
-      }
-    }),
-    placeholder: 'followers...'
+    value: pro?.following,
+    onChange: newFollowing => updateProfileAtIndex('following', newFollowing),
+    placeholder: "following..."
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "stat-label"
-  }, "following"))), view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, "Following"))), view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "bio"
-  }, profile?.description) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+  }, pro?.description) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     className: "bio",
     tagName: "div",
-    value: profile?.description,
-    onChange: newdescription => setAttributes({
-      profile: {
-        ...profile,
-        description: newdescription
-      }
-    }),
-    placeholder: 'description...'
+    value: pro?.description,
+    onChange: newDescription => updateProfileAtIndex('description', newDescription),
+    placeholder: "description..."
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "skills"
-  }, view && profile?.skills?.map((skill, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    key: index,
+  }, view && pro?.skills?.map((skill, skillIndex) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    key: skillIndex,
     className: "skill"
-  }, skill)), view || profile?.skills?.map((skill, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+  }, skill)), !view && pro?.skills?.map((skill, skillIndex) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     className: "skill",
-    key: index,
+    key: skillIndex,
     tagName: "div",
     value: skill,
-    onChange: newSkill => setAttributes({
-      profile: {
-        ...profile,
-        skills: profile.skills.map((s, i) => i === index ? newSkill : s)
-      }
-    }),
-    placeholder: 'skill...'
+    onChange: newSkill => {
+      const updatedSkills = [...pro.skills];
+      updatedSkills[skillIndex] = newSkill;
+      updateProfileAtIndex('skills', updatedSkills);
+    },
+    placeholder: "skill..."
   }))), isShow && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "actions"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: "action-btn primary"
-  }, view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, profile?.button?.follow) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+  }, view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, pro?.button?.follow) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     tagName: "span",
-    value: profile?.button?.follow,
+    value: pro?.button?.follow,
     placeholder: "Enter button text...",
-    onChange: newFollowText => setAttributes({
-      profile: {
-        ...profile,
-        button: {
-          ...profile.button,
-          follow: newFollowText // Update the 'follow' text
-        }
-      }
-    })
+    onChange: newFollowText => updateNestedProfileAtIndex('button', 'follow', newFollowText)
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "btn-effect"
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: "action-btn secondary"
-  }, view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, profile?.button?.message) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+  }, view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, pro?.button?.message) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     tagName: "span",
-    value: profile?.button?.message,
+    value: pro?.button?.message,
     placeholder: "Enter button text...",
-    onChange: newMessageText => setAttributes({
-      profile: {
-        ...profile,
-        button: {
-          ...profile.button,
-          message: newMessageText
-        }
-      }
-    })
+    onChange: newMessageText => updateNestedProfileAtIndex('button', 'message', newMessageText)
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "btn-effect"
   }))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -1319,7 +1225,8 @@ const Style = ({
     designation,
     skillses,
     skillsesBorder,
-    skillsespadding
+    skillsespadding,
+    layout
   } = attributes;
   const mainSl = `#${id}`;
   const container = `${mainSl} .container`;
@@ -1337,6 +1244,7 @@ const Style = ({
   const bio = `${cardContent} .bio`;
   const skills = `${cardContent} .skills`;
   const skill = `${cardContent} .skill`;
+  const cardContainer = `${mainSl} .cardsContainer`;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: `
@@ -1386,6 +1294,11 @@ const Style = ({
 		padding:${skillsespadding?.top} ${skillsespadding?.right} ${skillsespadding?.bottom} ${skillsespadding?.left};
 
 		}
+		${cardContainer}{
+		display: grid;
+          grid-template-columns:${layout === 2 ? "1fr 1fr " : "1fr 1fr 1fr"};
+        gap:10px;
+	}
 
 	`
     }
@@ -4069,7 +3982,7 @@ function castImmutable(value) {
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"b-blocks/test-purpose","version":"1.0.0","title":"profile card","category":"widgets","description":"Short description of the Test Purpose","keywords":["Test Purpose"],"textdomain":"b-blocks","attributes":{"alignment":{"type":"string","default":"center"},"profile":{"type":"object","default":{"name":"Shihab Shamim","image":"https://i.ibb.co.com/4RBL613/1714662976645-2.jpg","designation":"Senior Product Designer","skills":["UI/UXL","Branding","Motion"],"description":"Creative designer with 5+ years of experience in digital product design and brand identity.","projects":"1.2k","followers":"8.5k","following":"4.5k","button":{"follow":"Follow","message":"Message"}}},"isShow":{"type":"boolean","default":true},"cardStyle":{"type":"object","default":{"width":"400px","height":"900px"}},"cardBackground":{"type":"string","default":"#1e293b"},"CardBorder":{"type":"object","default":{"top":"24px","right":"24px","bottom":"24px","left":"24px"}},"profileImage":{"type":"object","default":{"width":"100%","height":"100%","top":"50%","right":"50%","bottom":"50%","left":"50%"}},"names":{"type":"object","default":{"size":"1.8rem","color":"linear-gradient(to right,#60a5fa,#a78bfa)"}},"description":{"type":"object","default":{"size":"1rem","color":"#94a3b8"}},"details":{"type":"object","default":{"size":"1rem","color":"linear-gradient(to right,#60a5fa,#a78bfa)"}},"designation":{"type":"object","default":{"size":"1.2rem","color":"#94a3b8"}},"skillses":{"type":"object","default":{"color":"#94a3b8","size":"0.9rem","bg":"rgba(255, 255, 255, 0.05)","borderRadius":"2rem"}},"skillsesBorder":{"type":"object","default":{"top":"32px","right":"32px","bottom":"32px","left":"32px"}},"skillsespadding":{"type":"object","default":{"top":"8px","right":"16px","bottom":"8px","left":"16px"}}},"supports":{"align":["wide","full"],"html":false},"example":{"attributes":{}},"editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./view.css","render":"file:./render.php","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"b-blocks/test-purpose","version":"1.0.0","title":"profile card","category":"widgets","description":"Short description of the Test Purpose","keywords":["Test Purpose"],"textdomain":"b-blocks","attributes":{"alignment":{"type":"string","default":"center"},"profile":{"type":"array","default":[{"name":"Shihab Shamim","image":"https://i.ibb.co.com/4RBL613/1714662976645-2.jpg","designation":"Senior Product Designer","skills":["UI/UXL","Branding","Motion"],"description":"Creative designer with 5+ years of experience in digital product design and brand identity.","projects":"1.2k","followers":"8.5k","following":"4.5k","button":{"follow":"Follow","message":"Message"}}]},"isShow":{"type":"boolean","default":true},"cardStyle":{"type":"object","default":{"width":"400px","height":"700px"}},"cardBackground":{"type":"string","default":"#1e293b"},"CardBorder":{"type":"object","default":{"top":"24px","right":"24px","bottom":"24px","left":"24px"}},"profileImage":{"type":"object","default":{"width":"100%","height":"100%","top":"50%","right":"50%","bottom":"50%","left":"50%"}},"names":{"type":"object","default":{"size":"1.8rem","color":"linear-gradient(to right,#60a5fa,#a78bfa)"}},"description":{"type":"object","default":{"size":"1rem","color":"#94a3b8"}},"details":{"type":"object","default":{"size":"1rem","color":"linear-gradient(to right,#60a5fa,#a78bfa)"}},"designation":{"type":"object","default":{"size":"1.2rem","color":"#94a3b8"}},"skillses":{"type":"object","default":{"color":"#94a3b8","size":"0.9rem","bg":"rgba(255, 255, 255, 0.05)","borderRadius":"2rem"}},"skillsesBorder":{"type":"object","default":{"top":"32px","right":"32px","bottom":"32px","left":"32px"}},"skillsespadding":{"type":"object","default":{"top":"8px","right":"16px","bottom":"8px","left":"16px"}},"layout":{"type":"number","default":2}},"supports":{"align":["wide","full"],"html":false},"example":{"attributes":{}},"editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./view.css","render":"file:./render.php","viewScript":"file:./view.js"}');
 
 /***/ })
 

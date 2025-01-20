@@ -7,11 +7,18 @@ document.addEventListener('DOMContentLoaded', () => {
 	const blockNameEls = document.querySelectorAll('.wp-block-b-blocks-test-purpose');
 	blockNameEls.forEach(blockNameEl => {
 		const attributes = JSON.parse(blockNameEl.dataset.attributes);
+		const {profile}=attributes
 
 		createRoot(blockNameEl).render(<>
 			<Style attributes={attributes} id={blockNameEl.id} />
 
-			<ProfileCard attributes={attributes}  view={true}></ProfileCard>
+			<div className='cardsContainer'>
+			{
+          profile.map((pro,index) =><ProfileCard key={index} pro={pro} attributes={attributes} ></ProfileCard>)
+          
+        }
+
+			</div>
 		</>);
 
 		blockNameEl?.removeAttribute('data-attributes');

@@ -16,25 +16,27 @@
       "default": "center"
     },
     "profile": {
-      "type": "object",
-      "default": {
-        "name": "Shihab Shamim",
-        "image": "https://i.ibb.co.com/4RBL613/1714662976645-2.jpg",
-        "designation": "Senior Product Designer",
-        "skills": [
-          "UI/UXL",
-          "Branding",
-          "Motion"
-        ],
-        "description": "Creative designer with 5+ years of experience in digital product design and brand identity.",
-        "projects": "1.2k",
-        "followers": "8.5k",
-        "following": "4.5k",
-        "button": {
-          "follow": "Follow",
-          "message": "Message"
+      "type": "array",
+      "default": [
+        {
+          "name": "Shihab Shamim",
+          "image": "https://i.ibb.co.com/4RBL613/1714662976645-2.jpg",
+          "designation": "Senior Product Designer",
+          "skills": [
+            "UI/UXL",
+            "Branding",
+            "Motion"
+          ],
+          "description": "Creative designer with 5+ years of experience in digital product design and brand identity.",
+          "projects": "1.2k",
+          "followers": "8.5k",
+          "following": "4.5k",
+          "button": {
+            "follow": "Follow",
+            "message": "Message"
+          }
         }
-      }
+      ]
     },
     "isShow": {
       "type": "boolean",
@@ -44,7 +46,7 @@
       "type": "object",
       "default": {
         "width": "400px",
-        "height": "900px"
+        "height": "700px"
       }
     },
     "cardBackground": {
@@ -125,6 +127,10 @@
         "bottom": "8px",
         "left": "16px"
       }
+    },
+    "layout": {
+      "type": "number",
+      "default": 2
     }
   },
   "supports": {

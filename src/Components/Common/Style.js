@@ -1,7 +1,7 @@
 import { getColorsCSS } from '../../../../bpl-tools/utils/getCSS';
 
 const Style = ({ attributes, id }) => {
-	const { colors,cardStyle ,cardBackground,CardBorder,profileImage,names,description,details,designation,skillses,skillsesBorder,skillsespadding} = attributes;
+	const { colors,cardStyle ,cardBackground,CardBorder,profileImage,names,description,details,designation,skillses,skillsesBorder,skillsespadding,layout} = attributes;
 
 	const mainSl = `#${id}`;
 	
@@ -21,6 +21,7 @@ const Style = ({ attributes, id }) => {
 	const bio=`${cardContent} .bio`
 	const skills=`${cardContent} .skills`
 	const skill=`${cardContent} .skill`
+	const cardContainer=`${mainSl} .cardsContainer`
 
 
 
@@ -72,6 +73,11 @@ const Style = ({ attributes, id }) => {
 		padding:${skillsespadding?.top} ${skillsespadding?.right} ${skillsespadding?.bottom} ${skillsespadding?.left};
 
 		}
+		${cardContainer}{
+		display: grid;
+          grid-template-columns:${layout===2?"1fr 1fr " :"1fr 1fr 1fr"};
+        gap:10px;
+	}
 
 	`}} />;
 }

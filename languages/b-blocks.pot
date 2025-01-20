@@ -1,74 +1,98 @@
-# Copyright (C) 2024 bPlugins
+# Copyright (C) 2025 bPlugins
 # This file is distributed under the GPLv3.
 msgid ""
 msgstr ""
-"Project-Id-Version: Plugin Name 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/plugin-slug\n"
+"Project-Id-Version: profile card 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/profile-card\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-08-05T11:12:37+00:00\n"
+"POT-Creation-Date: 2025-01-20T09:09:16+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.8.1\n"
+"X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: b-blocks\n"
 
 #. Plugin Name of the plugin
-msgid "Plugin Name"
+#: test-purpose.php
+msgid "profile card"
 msgstr ""
 
 #. Description of the plugin
+#: test-purpose.php
 msgid "Short description of the plugin"
 msgstr ""
 
 #. Author of the plugin
+#: test-purpose.php
 msgid "bPlugins"
 msgstr ""
 
 #. Author URI of the plugin
+#: test-purpose.php
 msgid "https://bplugins.com"
 msgstr ""
 
 #: build/index.js:1
-msgid "Layout:"
+msgid "Profile Info"
 msgstr ""
 
 #: build/index.js:1
-msgid "Add New Item"
+msgid "Profile Card Style"
+msgstr ""
+
+#: build/index.js:1
+msgid "Background Color"
+msgstr ""
+
+#: build/index.js:1
+msgid "Border Radius"
+msgstr ""
+
+#: build/index.js:1
+msgid "Profile Card Content Style"
+msgstr ""
+
+#: build/index.js:1
+msgid "Profile Image Style"
+msgstr ""
+
+#: build/index.js:1
+msgid "Profile Card Name Style"
+msgstr ""
+
+#: build/index.js:1
+msgid "Profile Card Designation Style"
+msgstr ""
+
+#: build/index.js:1
+msgid "Profile Card Details Style"
+msgstr ""
+
+#: build/index.js:1
+msgid "Profile Card Description Style"
+msgstr ""
+
+#: build/index.js:1
+msgid "Profile Card Skills Style"
+msgstr ""
+
+#: build/index.js:1
+msgid "Skills Padding"
 msgstr ""
 
 #: build/block.json
 msgctxt "block title"
-msgid "Block Name"
+msgid "profile card"
 msgstr ""
 
 #: build/block.json
 msgctxt "block description"
-msgid "Short description of the block"
+msgid "Short description of the Test Purpose"
 msgstr ""
 
 #: build/block.json
 msgctxt "block keyword"
-msgid "key1"
-msgstr ""
-
-#: build/block.json
-msgctxt "block keyword"
-msgid "key2"
-msgstr ""
-
-#: build/block.json
-msgctxt "block keyword"
-msgid "key3"
-msgstr ""
-
-#: build/block.json
-msgctxt "block keyword"
-msgid "key4"
-msgstr ""
-
-#: build/block.json
-msgctxt "block keyword"
-msgid "key5"
+msgid "Test Purpose"
 msgstr ""

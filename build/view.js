@@ -420,12 +420,39 @@ __webpack_require__.r(__webpack_exports__);
 const ProfileCard = ({
   view,
   attributes,
-  setAttributes
+  setAttributes,
+  pro,
+  index
 }) => {
   const {
     profile,
     isShow
   } = attributes;
+
+  // Helper function to update the profile at a specific index
+  const updateProfileAtIndex = (key, value) => {
+    const updatedProfiles = [...profile];
+    updatedProfiles[index] = {
+      ...updatedProfiles[index],
+      [key]: value
+    };
+    setAttributes({
+      profile: updatedProfiles
+    });
+  };
+  const updateNestedProfileAtIndex = (parentKey, key, value) => {
+    const updatedProfiles = [...profile];
+    updatedProfiles[index] = {
+      ...updatedProfiles[index],
+      [parentKey]: {
+        ...updatedProfiles[index][parentKey],
+        [key]: value
+      }
+    };
+    setAttributes({
+      profile: updatedProfiles
+    });
+  };
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "container"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -436,153 +463,106 @@ const ProfileCard = ({
     className: "avatar-wrapper"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     className: "avatar",
-    src: profile.image,
+    src: pro.image,
     alt: "Profile Pic"
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "profile-info"
   }, view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
     className: "name"
-  }, profile?.name) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+  }, pro?.name) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     className: "name",
-    onChange: newName => setAttributes({
-      profile: {
-        ...profile,
-        name: newName
-      }
-    }),
     tagName: "h2",
-    value: profile?.name,
-    placeholder: 'Your Name...'
+    value: pro?.name,
+    onChange: newName => updateProfileAtIndex('name', newName),
+    placeholder: "Your Name..."
   }), view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "title"
-  }, profile?.designation) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+  }, pro?.designation) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     className: "title",
-    onChange: newDesignation => setAttributes({
-      profile: {
-        ...profile,
-        designation: newDesignation
-      }
-    }),
     tagName: "p",
-    value: profile?.designation,
-    placeholder: 'Your designation...'
+    value: pro?.designation,
+    onChange: newDesignation => updateProfileAtIndex('designation', newDesignation),
+    placeholder: "Your designation..."
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "stats"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "stat"
   }, view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "stat-value"
-  }, profile?.projects) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+  }, pro?.projects) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     className: "stat-value",
-    onChange: newProjects => setAttributes({
-      profile: {
-        ...profile,
-        projects: newProjects
-      }
-    }),
     tagName: "span",
-    value: profile?.projects,
-    placeholder: 'projects...'
+    value: pro?.projects,
+    onChange: newProjects => updateProfileAtIndex('projects', newProjects),
+    placeholder: "projects..."
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "stat-label"
   }, "Projects")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "stat"
   }, view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "stat-value"
-  }, profile?.followers) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+  }, pro?.followers) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     className: "stat-value",
     tagName: "span",
-    value: profile?.followers,
-    onChange: newfollowers => setAttributes({
-      profile: {
-        ...profile,
-        followers: newfollowers
-      }
-    }),
-    placeholder: 'followers...'
+    value: pro?.followers,
+    onChange: newFollowers => updateProfileAtIndex('followers', newFollowers),
+    placeholder: "followers..."
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "stat-label"
   }, "Followers")), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "stat"
   }, view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "stat-value"
-  }, profile?.following) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+  }, pro?.following) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     className: "stat-value",
     tagName: "span",
-    value: profile?.following,
-    onChange: newfollowing => setAttributes({
-      profile: {
-        ...profile,
-        following: newfollowing
-      }
-    }),
-    placeholder: 'followers...'
+    value: pro?.following,
+    onChange: newFollowing => updateProfileAtIndex('following', newFollowing),
+    placeholder: "following..."
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "stat-label"
-  }, "following"))), view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, "Following"))), view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "bio"
-  }, profile?.description) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+  }, pro?.description) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     className: "bio",
     tagName: "div",
-    value: profile?.description,
-    onChange: newdescription => setAttributes({
-      profile: {
-        ...profile,
-        description: newdescription
-      }
-    }),
-    placeholder: 'description...'
+    value: pro?.description,
+    onChange: newDescription => updateProfileAtIndex('description', newDescription),
+    placeholder: "description..."
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "skills"
-  }, view && profile?.skills?.map((skill, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    key: index,
+  }, view && pro?.skills?.map((skill, skillIndex) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    key: skillIndex,
     className: "skill"
-  }, skill)), view || profile?.skills?.map((skill, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+  }, skill)), !view && pro?.skills?.map((skill, skillIndex) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     className: "skill",
-    key: index,
+    key: skillIndex,
     tagName: "div",
     value: skill,
-    onChange: newSkill => setAttributes({
-      profile: {
-        ...profile,
-        skills: profile.skills.map((s, i) => i === index ? newSkill : s)
-      }
-    }),
-    placeholder: 'skill...'
+    onChange: newSkill => {
+      const updatedSkills = [...pro.skills];
+      updatedSkills[skillIndex] = newSkill;
+      updateProfileAtIndex('skills', updatedSkills);
+    },
+    placeholder: "skill..."
   }))), isShow && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "actions"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: "action-btn primary"
-  }, view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, profile?.button?.follow) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+  }, view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, pro?.button?.follow) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     tagName: "span",
-    value: profile?.button?.follow,
+    value: pro?.button?.follow,
     placeholder: "Enter button text...",
-    onChange: newFollowText => setAttributes({
-      profile: {
-        ...profile,
-        button: {
-          ...profile.button,
-          follow: newFollowText // Update the 'follow' text
-        }
-      }
-    })
+    onChange: newFollowText => updateNestedProfileAtIndex('button', 'follow', newFollowText)
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "btn-effect"
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: "action-btn secondary"
-  }, view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, profile?.button?.message) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+  }, view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, pro?.button?.message) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     tagName: "span",
-    value: profile?.button?.message,
+    value: pro?.button?.message,
     placeholder: "Enter button text...",
-    onChange: newMessageText => setAttributes({
-      profile: {
-        ...profile,
-        button: {
-          ...profile.button,
-          message: newMessageText
-        }
-      }
-    })
+    onChange: newMessageText => updateNestedProfileAtIndex('button', 'message', newMessageText)
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "btn-effect"
   }))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -628,7 +608,8 @@ const Style = ({
     designation,
     skillses,
     skillsesBorder,
-    skillsespadding
+    skillsespadding,
+    layout
   } = attributes;
   const mainSl = `#${id}`;
   const container = `${mainSl} .container`;
@@ -646,6 +627,7 @@ const Style = ({
   const bio = `${cardContent} .bio`;
   const skills = `${cardContent} .skills`;
   const skill = `${cardContent} .skill`;
+  const cardContainer = `${mainSl} .cardsContainer`;
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     dangerouslySetInnerHTML: {
       __html: `
@@ -695,6 +677,11 @@ const Style = ({
 		padding:${skillsespadding?.top} ${skillsespadding?.right} ${skillsespadding?.bottom} ${skillsespadding?.left};
 
 		}
+		${cardContainer}{
+		display: grid;
+          grid-template-columns:${layout === 2 ? "1fr 1fr " : "1fr 1fr 1fr"};
+        gap:10px;
+	}
 
 	`
     }
@@ -866,13 +853,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const blockNameEls = document.querySelectorAll('.wp-block-b-blocks-test-purpose');
   blockNameEls.forEach(blockNameEl => {
     const attributes = JSON.parse(blockNameEl.dataset.attributes);
+    const {
+      profile
+    } = attributes;
     (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(blockNameEl).render((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Common_Style__WEBPACK_IMPORTED_MODULE_3__["default"], {
       attributes: attributes,
       id: blockNameEl.id
-    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Common_ProfileCard__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      attributes: attributes,
-      view: true
-    })));
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "cardsContainer"
+    }, profile.map((pro, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Components_Common_ProfileCard__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      key: index,
+      pro: pro,
+      attributes: attributes
+    })))));
     blockNameEl?.removeAttribute('data-attributes');
   });
 });

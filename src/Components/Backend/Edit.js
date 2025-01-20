@@ -6,6 +6,7 @@ import ProfileCard from "../Common/ProfileCard";
 
 const Edit = (props) => {
   const { attributes, setAttributes, clientId } = props;
+  const{profile}=attributes
 
 
   return (
@@ -15,7 +16,12 @@ const Edit = (props) => {
       <div {...useBlockProps()} id={`block-${clientId}`}>
         <Style attributes={attributes} id={`block-${clientId}`} />
 
-        <ProfileCard attributes={attributes} setAttributes={setAttributes}></ProfileCard>
+        <div className="cardsContainer">
+        {
+         Array.isArray(profile) && profile.map((pro,index) =><ProfileCard key={index} pro={pro} index={index} attributes={attributes} setAttributes={setAttributes}></ProfileCard>)
+          
+        }
+        </div>
 
         
       </div>

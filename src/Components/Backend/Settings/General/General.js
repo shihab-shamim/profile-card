@@ -8,19 +8,19 @@ import { TextareaControl } from '@wordpress/components';
 import { Button } from '@wordpress/components';
 import { FormTokenField } from '@wordpress/components';
 import { FormToggle } from '@wordpress/components';
-import { Flex } from '@wordpress/components';
+import { Flex,ButtonGroup } from '@wordpress/components';
 import { MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
 
 
 const General = ({ attributes, setAttributes }) => {
-  const { purposeType,profile,isShow} = attributes;
+  const { purposeType,profile,isShow,layout} = attributes;
   // const {image}=profile
 
   
 
   return (
     <>
-    <PanelBody className='bPlPanelBody' title={__('Profile Info', 'b-blocks')} initialOpen={false}>
+    {/* <PanelBody className='bPlPanelBody' title={__('Profile Info', 'b-blocks')} initialOpen={false}>
      
      <TextControl
   label="Profile Image URL"
@@ -187,7 +187,56 @@ label='Add Skill'
     onChange={ () => setAttributes({isShow:!isShow}) }
   />
   <label>Show Profile Button {isShow}</label>
-    </Flex>
+    </Flex> */}
+
+
+    <PanelBody className='bPlPanelBody' title={__('Profile Cards LayOut', 'b-blocks')} initialOpen={false}>
+    <ButtonGroup>
+	<Button isPrimary={layout === 2} 
+  isSecondary={layout !== 2} onClick={()=>{
+    setAttributes({layout:2})
+
+  }}>2Column</Button>
+	<Button isPrimary={layout === 3} 
+  isSecondary={layout !== 3} 
+  onClick={()=>{
+    setAttributes({layout:3})
+
+  }}
+  >3 Column</Button>
+	
+</ButtonGroup>
+
+    </PanelBody>
+
+
+    <Button 
+  isPrimary 
+  onClick={() => {
+    const newProfileCard = {
+      name: "Shihab Shamim",
+      image: "https://i.ibb.co.com/4RBL613/1714662976645-2.jpg",
+      designation: "Senior Product Designer",
+      skills: ["UI/UXL", "Branding", "Motion"],
+      description: "Creative designer with 5+ years of experience in digital product design and brand identity.",
+      projects: "16.2k",
+      followers: "86.5k",
+      following: "46.5k",
+      button: {
+        follow: "Follow",
+        message: "Message"
+      }
+    };
+
+    // Ensure profile is treated as an array and add the new card
+    setAttributes({
+      profile: Array.isArray(profile) ? [...profile, newProfileCard] : [newProfileCard],
+    });
+  }}
+>
+  Add Card
+</Button>
+
     </>
   )
 }
