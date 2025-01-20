@@ -50,6 +50,81 @@
     "cardBackground": {
       "type": "string",
       "default": "#1e293b"
+    },
+    "CardBorder": {
+      "type": "object",
+      "default": {
+        "top": "24px",
+        "right": "24px",
+        "bottom": "24px",
+        "left": "24px"
+      }
+    },
+    "profileImage": {
+      "type": "object",
+      "default": {
+        "width": "100%",
+        "height": "100%",
+        "top": "50%",
+        "right": "50%",
+        "bottom": "50%",
+        "left": "50%"
+      }
+    },
+    "names": {
+      "type": "object",
+      "default": {
+        "size": "1.8rem",
+        "color": "linear-gradient(to right,#60a5fa,#a78bfa)"
+      }
+    },
+    "description": {
+      "type": "object",
+      "default": {
+        "size": "1rem",
+        "color": "#94a3b8"
+      }
+    },
+    "details": {
+      "type": "object",
+      "default": {
+        "size": "1rem",
+        "color": "linear-gradient(to right,#60a5fa,#a78bfa)"
+      }
+    },
+    "designation": {
+      "type": "object",
+      "default": {
+        "size": "1.2rem",
+        "color": "#94a3b8"
+      }
+    },
+    "skillses": {
+      "type": "object",
+      "default": {
+        "color": "#94a3b8",
+        "size": "0.9rem",
+        "bg": "rgba(255, 255, 255, 0.05)",
+        "borderRadius": "2rem"
+      }
+    },
+    "skillsesBorder": {
+      "type": "object",
+      "default": {
+        "top": "32px",
+        "right": "32px",
+        "bottom": "32px",
+        "left": "32px"
+      }
+    },
+    "skillsespadding": {
+      "type": "object",
+      "default": {
+        "top": "8px",
+        "right": "16px",
+        "bottom": "8px",
+        "left": "16px"
+      }
     }
   },
   "supports": {

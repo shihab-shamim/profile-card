@@ -9,6 +9,7 @@ import { Button } from '@wordpress/components';
 import { FormTokenField } from '@wordpress/components';
 import { FormToggle } from '@wordpress/components';
 import { Flex } from '@wordpress/components';
+import { MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
 
 
 const General = ({ attributes, setAttributes }) => {
@@ -34,6 +35,23 @@ const General = ({ attributes, setAttributes }) => {
   }
 
 />
+<MediaUploadCheck>
+			<MediaUpload
+          onSelect={(newImage) => 
+            setAttributes({
+              profile: {
+                ...profile,
+                image: newImage.url, // Save the image URL
+              },
+            })
+          }
+				allowedTypes={['image'] }
+				value={profile.image || "" }
+				render={ ( { open } ) => (
+					<Button isPrimary onClick={ open }>Upload Image</Button>
+				) }
+			/>
+		</MediaUploadCheck>
 <TextControl
   label="Profile Name"
   value={profile.name || ""} // Access the nested value

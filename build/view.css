@@ -21,7 +21,6 @@
   padding: 2.5rem;
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
-  border-radius: 1.5rem;
   overflow: hidden;
   transition: transform 0.3s ease;
 }
@@ -40,9 +39,7 @@
 }
 .wp-block-b-blocks-test-purpose .avatar {
   position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
+  margin: 0, auto;
   overflow: hidden;
 }
 .wp-block-b-blocks-test-purpose .avatar-inner {
@@ -77,15 +74,10 @@
   text-align: center;
 }
 .wp-block-b-blocks-test-purpose .name {
-  font-size: 1.8rem;
   margin-bottom: 0.5rem;
-  background: linear-gradient(to right, #60a5fa, #a78bfa);
-  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .wp-block-b-blocks-test-purpose .title {
-  color: #94a3b8;
-  font-size: 1rem;
   margin-bottom: 2rem;
 }
 .wp-block-b-blocks-test-purpose .stats {
@@ -102,18 +94,10 @@
   gap: 0.5rem;
 }
 .wp-block-b-blocks-test-purpose .stat-value {
-  font-size: 1.2rem;
   font-weight: bold;
-  background: linear-gradient(to right, #60a5fa, #a78bfa);
-  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.wp-block-b-blocks-test-purpose .stat-label {
-  font-size: 0.9rem;
-  color: #94a3b8;
-}
 .wp-block-b-blocks-test-purpose .bio {
-  color: #94a3b8;
   line-height: 1.6;
   margin-bottom: 2rem;
   padding: 0 1rem;
@@ -125,11 +109,6 @@
   margin-bottom: 2rem;
 }
 .wp-block-b-blocks-test-purpose .skill {
-  padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 2rem;
-  font-size: 0.9rem;
-  color: #94a3b8;
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
 }
