@@ -608,7 +608,72 @@ const General = ({
     className: "bPlPanelBody",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Profile Cards', 'b-blocks'),
     initialOpen: false
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+  }, profile.map((pro, index) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    key: index,
+    className: "bPlPanelBody",
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(`Profile Card-${index + 1}`, 'b-blocks'),
+    initialOpen: false
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+    className: "bPlPanelBody",
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Profile Info', 'b-blocks'),
+    initialOpen: false
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+    label: "Profile Image URL",
+    value: profile[index].image || "" // Access the nested value
+    ,
+    onChange: newImage => {
+      const updatedProfile = [...profile];
+      updatedProfile[index] = {
+        ...updatedProfile[index],
+        image: newImage
+      };
+      setAttributes({
+        profile: updatedProfile
+      });
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.MediaUploadCheck, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.MediaUpload, {
+    onSelect: newImage => {
+      const updatedProfile = [...profile];
+      updatedProfile[index] = {
+        ...updatedProfile[index],
+        image: newImage.url
+      };
+      setAttributes({
+        profile: updatedProfile
+      });
+    },
+    allowedTypes: ['image'],
+    value: profile.image || "",
+    render: ({
+      open
+    }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+      isPrimary: true,
+      onClick: open
+    }, "Upload Image")
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+    label: "Profile Name",
+    value: profile[index].name || "",
+    onChange: newName => {
+      const updatedProfile = [...profile];
+      updatedProfile[index] = {
+        ...updatedProfile[index],
+        name: newName
+      };
+      setAttributes({
+        profile: updatedProfile
+      });
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+    label: "Profile Designation",
+    value: profile[index].designation || "" // Access the nested value
+    ,
+    onChange: newDesignation => setAttributes({
+      profile: {
+        ...profile,
+        designation: newDesignation
+      }
+    })
+  }))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Profile Cards LayOut', 'b-blocks'),
     initialOpen: false

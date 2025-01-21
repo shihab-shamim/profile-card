@@ -22,7 +22,201 @@ const General = ({ attributes, setAttributes }) => {
     <>
       <PanelBody className='bPlPanelBody' title={__('Profile Cards', 'b-blocks')} initialOpen={false}>
       
-       
+       {
+        profile.map((pro,index)=><PanelBody key={index}className='bPlPanelBody' title={__(`Profile Card-${index+1}`, 'b-blocks')}  initialOpen={false} >
+          <PanelBody className='bPlPanelBody' title={__('Profile Info', 'b-blocks')} initialOpen={false}>
+
+     
+     <TextControl
+  label="Profile Image URL"
+  value={profile[index].image || ""} // Access the nested value
+  onChange={(newImage) => {
+    const updatedProfile = [...profile];
+    updatedProfile[index] = {
+      ...updatedProfile[index],
+      image: newImage,
+    };
+  
+    setAttributes({
+      profile: updatedProfile,
+    });
+  }}
+  
+
+/>
+
+<MediaUploadCheck>
+			<MediaUpload
+          onSelect={(newImage) => {
+            const updatedProfile = [...profile];
+            updatedProfile[index] = {
+              ...updatedProfile[index], 
+              image: newImage.url, 
+            };
+          
+            setAttributes({
+              profile: updatedProfile, 
+            });
+          }}
+          
+				allowedTypes={['image'] }
+				value={profile.image || "" }
+				render={ ( { open } ) => (
+					<Button isPrimary onClick={ open }>Upload Image</Button>
+				) }
+			/>
+		</MediaUploadCheck>
+
+
+<TextControl
+  label="Profile Name"
+  value={profile[index].name || ""} 
+  onChange={(newName) => {
+    const updatedProfile = [...profile]; 
+    updatedProfile[index] = {
+      ...updatedProfile[index], 
+      name: newName, 
+    };
+  
+    setAttributes({
+      profile: updatedProfile, 
+    });
+  }}
+  
+  
+/>
+
+
+<TextControl
+  label="Profile Designation"
+  value={profile[index].designation || ""} // Access the nested value
+  onChange={(newDesignation) => 
+    setAttributes({
+      profile: {
+        ...profile, 
+        designation: newDesignation, 
+      },
+    })
+  }
+  
+/>
+
+
+{/* <TextControl
+  label="Profile Projects"
+  value={profile.projects || ""} // Access the nested value
+  onChange={(newProjects) => 
+    setAttributes({
+      profile: {
+        ...profile, 
+        projects: newProjects, 
+      },
+    })
+  }
+  
+/> */}
+
+
+{/* <TextControl
+  label="Profile Followers"
+  value={profile.followers || ""} // Access the nested value
+  onChange={(newfollowers) => 
+    setAttributes({
+      profile: {
+        ...profile, 
+        followers: newfollowers, 
+      },
+    })
+  }
+  
+/> */}
+
+{/* <TextControl
+  label="Profile Following"
+  value={profile.following || ""} // Access the nested value
+  onChange={(newfollowing) => 
+    setAttributes({
+      profile: {
+        ...profile, 
+        following: newfollowing, 
+      },
+    })
+  }
+  
+/> */}
+
+{/* <TextareaControl
+	label="Profile Description"
+	rows={4}
+	value={ profile?.description }
+	onChange={(newdescription) => 
+    setAttributes({
+      profile: {
+        ...profile, 
+        description: newdescription, 
+      },
+    })
+  }
+/> */}
+
+          {/* <label>Profile Skills</label>
+          {profile?.skills.map((skill, index) => (
+ <>
+  <TextControl
+    key={index}
+    label={`Skill-${index + 1}`}
+    value={skill}
+    onChange={(newSkill) =>
+      setAttributes({
+        profile: {
+          ...profile,
+          skills: profile.skills.map((s, i) =>
+            i === index ? newSkill : s 
+          ),
+        },
+      })
+    }
+  />
+  
+  <Button isPrimary 
+   onClick={() =>
+    setAttributes({
+      profile: {
+        ...profile,
+        skills: profile.skills.filter((_, i) => i !== index),
+      },
+    })
+  }
+  >Delete</Button>
+ </>
+))} */}
+
+
+
+
+
+{/* <FormTokenField
+label='Add Skill'
+  value={profile.skills} 
+  suggestions={profile.skills} 
+  onChange={(newSkills) =>
+    setAttributes({
+      profile: {
+        ...profile,
+        skills: newSkills, 
+      },
+    })
+  }
+/> */}
+
+
+
+
+    </PanelBody>
+
+
+        </PanelBody>)
+       }
 
       </PanelBody>
 
