@@ -665,14 +665,114 @@ const General = ({
     }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
     label: "Profile Designation",
-    value: profile[index].designation || "" // Access the nested value
-    ,
-    onChange: newDesignation => setAttributes({
-      profile: {
-        ...profile,
+    value: profile[index].designation || "",
+    onChange: newDesignation => {
+      const updatedProfile = [...profile];
+      updatedProfile[index] = {
+        ...updatedProfile[index],
         designation: newDesignation
-      }
-    })
+      };
+      setAttributes({
+        profile: updatedProfile
+      });
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+    label: "Profile Projects",
+    value: profile[index].projects || "",
+    onChange: newProjects => {
+      const updatedProfile = [...profile];
+      updatedProfile[index] = {
+        ...updatedProfile[index],
+        projects: newProjects
+      };
+      setAttributes({
+        profile: updatedProfile
+      });
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+    label: "Profile Followers",
+    value: profile[index].followers || "",
+    onChange: newFollowers => {
+      const updatedProfile = [...profile];
+      updatedProfile[index] = {
+        ...updatedProfile[index],
+        followers: newFollowers
+      };
+      setAttributes({
+        profile: updatedProfile
+      });
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+    label: "Profile Following",
+    value: profile[index].following || "",
+    onChange: newFollowing => {
+      const updatedProfile = [...profile];
+      updatedProfile[index] = {
+        ...updatedProfile[index],
+        following: newFollowing
+      };
+      setAttributes({
+        profile: updatedProfile
+      });
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextareaControl, {
+    label: "Profile Description",
+    rows: 4,
+    value: profile[index]?.description,
+    onChange: newDescription => {
+      const updatedProfile = [...profile];
+      updatedProfile[index] = {
+        ...updatedProfile[index],
+        description: newDescription
+      };
+      setAttributes({
+        profile: updatedProfile
+      });
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Profile Skills"), profile[index]?.skills.map((skill, skillIndex) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    key: skillIndex
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
+    label: `Skill-${skillIndex + 1}`,
+    value: skill,
+    onChange: newSkill => {
+      const updatedSkills = [...profile[index].skills];
+      updatedSkills[skillIndex] = newSkill;
+      const updatedProfile = [...profile];
+      updatedProfile[index] = {
+        ...profile[index],
+        skills: updatedSkills
+      };
+      setAttributes({
+        profile: updatedProfile
+      });
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    isPrimary: true,
+    onClick: () => {
+      const updatedSkills = profile[index].skills.filter((_, i) => i !== skillIndex);
+      const updatedProfile = [...profile];
+      updatedProfile[index] = {
+        ...profile[index],
+        skills: updatedSkills
+      };
+      setAttributes({
+        profile: updatedProfile
+      });
+    }
+  }, "Delete"))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FormTokenField, {
+    label: "Add Skill",
+    value: profile[index].skills,
+    suggestions: profile[index].skills,
+    onChange: newSkills => {
+      const updatedProfile = [...profile];
+      updatedProfile[index] = {
+        ...updatedProfile[index],
+        skills: newSkills
+      };
+      setAttributes({
+        profile: updatedProfile
+      });
+    }
   }))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Profile Cards LayOut', 'b-blocks'),
@@ -716,7 +816,16 @@ const General = ({
         profile: Array.isArray(profile) ? [...profile, newProfileCard] : [newProfileCard]
       });
     }
-  }, "Add Card"));
+  }, "Add Card"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Flex, {
+    align: "center",
+    justify: "center",
+    gap: 2
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FormToggle, {
+    checked: isShow,
+    onChange: () => setAttributes({
+      isShow: !isShow
+    })
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Show Profile Button ", isShow)));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (General);
 

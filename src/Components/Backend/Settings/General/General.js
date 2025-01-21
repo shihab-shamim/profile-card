@@ -89,125 +89,151 @@ const General = ({ attributes, setAttributes }) => {
 
 <TextControl
   label="Profile Designation"
-  value={profile[index].designation || ""} // Access the nested value
-  onChange={(newDesignation) => 
+  value={profile[index].designation || ""}
+  onChange={(newDesignation) => {
+    const updatedProfile = [...profile]; 
+    updatedProfile[index] = {
+      ...updatedProfile[index], 
+      designation: newDesignation, 
+    };
+  
     setAttributes({
-      profile: {
-        ...profile, 
-        designation: newDesignation, 
-      },
-    })
-  }
+      profile: updatedProfile, 
+    });
+  }}
+  
   
 />
 
 
-{/* <TextControl
+<TextControl
   label="Profile Projects"
-  value={profile.projects || ""} // Access the nested value
-  onChange={(newProjects) => 
-    setAttributes({
-      profile: {
-        ...profile, 
-        projects: newProjects, 
-      },
-    })
-  }
+  value={profile[index].projects || ""} 
+  onChange={(newProjects) => {
+    const updatedProfile = [...profile]; 
+    updatedProfile[index] = {
+      ...updatedProfile[index], 
+      projects: newProjects, 
+    };
   
-/> */}
+    setAttributes({
+      profile: updatedProfile, 
+    });
+  }}
+  
+  
+/>
 
 
-{/* <TextControl
+<TextControl
   label="Profile Followers"
-  value={profile.followers || ""} // Access the nested value
-  onChange={(newfollowers) => 
-    setAttributes({
-      profile: {
-        ...profile, 
-        followers: newfollowers, 
-      },
-    })
-  }
+  value={profile[index].followers || ""} 
+  onChange={(newFollowers) => {
+    const updatedProfile = [...profile]; 
+    updatedProfile[index] = {
+      ...updatedProfile[index],
+      followers: newFollowers, 
+    };
   
-/> */}
+    setAttributes({
+      profile: updatedProfile,
+    });
+  }}
+  
+  
+/>
 
-{/* <TextControl
+<TextControl
   label="Profile Following"
-  value={profile.following || ""} // Access the nested value
-  onChange={(newfollowing) => 
-    setAttributes({
-      profile: {
-        ...profile, 
-        following: newfollowing, 
-      },
-    })
-  }
+  value={profile[index].following || ""} 
+  onChange={(newFollowing) => {
+    const updatedProfile = [...profile]; 
+    updatedProfile[index] = {
+      ...updatedProfile[index], 
+      following: newFollowing, 
+    };
   
-/> */}
+    setAttributes({
+      profile: updatedProfile,
+    });
+  }}
+  
+  
+/>
 
-{/* <TextareaControl
+<TextareaControl
 	label="Profile Description"
 	rows={4}
-	value={ profile?.description }
-	onChange={(newdescription) => 
-    setAttributes({
-      profile: {
-        ...profile, 
-        description: newdescription, 
-      },
-    })
-  }
-/> */}
-
-          {/* <label>Profile Skills</label>
-          {profile?.skills.map((skill, index) => (
- <>
-  <TextControl
-    key={index}
-    label={`Skill-${index + 1}`}
-    value={skill}
-    onChange={(newSkill) =>
-      setAttributes({
-        profile: {
-          ...profile,
-          skills: profile.skills.map((s, i) =>
-            i === index ? newSkill : s 
-          ),
-        },
-      })
-    }
-  />
+	value={ profile[index]?.description }
+	onChange={(newDescription) => {
+    const updatedProfile = [...profile]; 
+    updatedProfile[index] = {
+      ...updatedProfile[index],
+      description: newDescription, 
+    };
   
-  <Button isPrimary 
-   onClick={() =>
     setAttributes({
-      profile: {
-        ...profile,
-        skills: profile.skills.filter((_, i) => i !== index),
-      },
-    })
-  }
-  >Delete</Button>
- </>
-))} */}
+      profile: updatedProfile, 
+    });
+  }}
+  
+/>
+
+<label>Profile Skills</label>
+{profile[index]?.skills.map((skill, skillIndex) => (
+  <div key={skillIndex}>
+    <TextControl
+      label={`Skill-${skillIndex + 1}`}
+      value={skill}
+      onChange={(newSkill) => {
+        const updatedSkills = [...profile[index].skills];
+        updatedSkills[skillIndex] = newSkill;
+        const updatedProfile = [...profile];
+        updatedProfile[index] = { ...profile[index], skills: updatedSkills };
+
+        setAttributes({ profile: updatedProfile });
+      }}
+    />
+
+    <Button
+      isPrimary
+      onClick={() => {
+        const updatedSkills = profile[index].skills.filter(
+          (_, i) => i !== skillIndex
+        );
+        const updatedProfile = [...profile];
+        updatedProfile[index] = { ...profile[index], skills: updatedSkills };
+
+        setAttributes({ profile: updatedProfile });
+      }}
+    >
+      Delete
+    </Button>
+  </div>
+))}
 
 
 
 
 
-{/* <FormTokenField
+
+<FormTokenField
 label='Add Skill'
-  value={profile.skills} 
-  suggestions={profile.skills} 
-  onChange={(newSkills) =>
+  value={profile[index].skills} 
+  suggestions={profile[index].skills} 
+  onChange={(newSkills) => {
+    const updatedProfile = [...profile]; 
+    updatedProfile[index] = {
+      ...updatedProfile[index],
+      skills: newSkills, 
+    };
+  
     setAttributes({
-      profile: {
-        ...profile,
-        skills: newSkills, 
-      },
-    })
-  }
-/> */}
+      profile: updatedProfile, 
+    });
+  }}
+  
+/>
 
 
 
@@ -220,174 +246,7 @@ label='Add Skill'
 
       </PanelBody>
 
-    {/* <PanelBody className='bPlPanelBody' title={__('Profile Info', 'b-blocks')} initialOpen={false}>
-     
-     <TextControl
-  label="Profile Image URL"
-  value={attributes.profile.image || ""} // Access the nested value
-  onChange={(newImage) => 
-    setAttributes({
-      profile: {
-        ...profile, 
-        image: newImage, 
-      },
-    })
-  }
-
-/>
-<MediaUploadCheck>
-			<MediaUpload
-          onSelect={(newImage) => 
-            setAttributes({
-              profile: {
-                ...profile,
-                image: newImage.url, // Save the image URL
-              },
-            })
-          }
-				allowedTypes={['image'] }
-				value={profile.image || "" }
-				render={ ( { open } ) => (
-					<Button isPrimary onClick={ open }>Upload Image</Button>
-				) }
-			/>
-		</MediaUploadCheck>
-<TextControl
-  label="Profile Name"
-  value={profile.name || ""} // Access the nested value
-  onChange={(newName) => 
-    setAttributes({
-      profile: {
-        ...profile, 
-        name: newName, 
-      },
-    })
-  }
-  
-/>
-<TextControl
-  label="Profile Designation"
-  value={profile.designation || ""} // Access the nested value
-  onChange={(newDesignation) => 
-    setAttributes({
-      profile: {
-        ...profile, 
-        designation: newDesignation, 
-      },
-    })
-  }
-  
-/>
-<TextControl
-  label="Profile Projects"
-  value={profile.projects || ""} // Access the nested value
-  onChange={(newProjects) => 
-    setAttributes({
-      profile: {
-        ...profile, 
-        projects: newProjects, 
-      },
-    })
-  }
-  
-/>
-<TextControl
-  label="Profile Followers"
-  value={profile.followers || ""} // Access the nested value
-  onChange={(newfollowers) => 
-    setAttributes({
-      profile: {
-        ...profile, 
-        followers: newfollowers, 
-      },
-    })
-  }
-  
-/>
-<TextControl
-  label="Profile Following"
-  value={profile.following || ""} // Access the nested value
-  onChange={(newfollowing) => 
-    setAttributes({
-      profile: {
-        ...profile, 
-        following: newfollowing, 
-      },
-    })
-  }
-  
-/>
-<TextareaControl
-	label="Profile Description"
-	rows={4}
-	value={ profile?.description }
-	onChange={(newdescription) => 
-    setAttributes({
-      profile: {
-        ...profile, 
-        description: newdescription, 
-      },
-    })
-  }
-/>
-          <label>Profile Skills</label>
-          {profile?.skills.map((skill, index) => (
- <>
-  <TextControl
-    key={index}
-    label={`Skill-${index + 1}`}
-    value={skill}
-    onChange={(newSkill) =>
-      setAttributes({
-        profile: {
-          ...profile,
-          skills: profile.skills.map((s, i) =>
-            i === index ? newSkill : s 
-          ),
-        },
-      })
-    }
-  />
-  <Button isPrimary 
-   onClick={() =>
-    setAttributes({
-      profile: {
-        ...profile,
-        skills: profile.skills.filter((_, i) => i !== index),
-      },
-    })
-  }
-  >Delete</Button>
- </>
-))}
-
-<FormTokenField
-label='Add Skill'
-  value={profile.skills} 
-  suggestions={profile.skills} 
-  onChange={(newSkills) =>
-    setAttributes({
-      profile: {
-        ...profile,
-        skills: newSkills, 
-      },
-    })
-  }
-/>
-
-
-
-
-    </PanelBody>
-
-    <Flex align="center" justify='center' gap={2}>
-    <FormToggle
-    
-    checked={ isShow }
-    onChange={ () => setAttributes({isShow:!isShow}) }
-  />
-  <label>Show Profile Button {isShow}</label>
-    </Flex> */}
+      
 
 
     <PanelBody className='bPlPanelBody' title={__('Profile Cards LayOut', 'b-blocks')} initialOpen={false}>
@@ -436,6 +295,16 @@ label='Add Skill'
 >
   Add Card
 </Button>
+
+<Flex align="center" justify='center' gap={2}>
+    <FormToggle
+    
+    checked={ isShow }
+    onChange={ () => setAttributes({isShow:!isShow}) }
+  />
+  <label>Show Profile Button {isShow}</label>
+    </Flex> 
+    
 
     </>
   )
