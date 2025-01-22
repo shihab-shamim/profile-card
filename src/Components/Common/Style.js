@@ -78,7 +78,10 @@ const Style = ({ attributes, id }) => {
           grid-template-columns:${layout===2?"1fr 1fr " :"1fr 1fr 1fr"};
         gap:10px;
 	}
-
+	.avatar-wrapper{
+	border:5px solid #60a5fa;
+		border-radius: 50%;
+	}
 	`}} />;
 }
 export default Style;
