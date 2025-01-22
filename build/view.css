@@ -229,5 +229,8 @@
 .wp-block-b-blocks-test-purpose #components-form-token-suggestions-howto-0 {
   display: none;
 }
+.wp-block-b-blocks-test-purpose .buttonLink {
+  text-decoration: none;
+}
 
 /*# sourceMappingURL=view.css.map*/

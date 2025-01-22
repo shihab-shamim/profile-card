@@ -147,7 +147,7 @@ const ProfileCard = ({ view, attributes, setAttributes, pro, index }) => {
                                 {/* Follow Button */}
                                 <button className="action-btn primary">
                                     {view ? (
-                                        <span>{pro?.button?.follow}</span>
+                                        <span><a className='buttonLink' href={pro?.button?.follow} target='_blank' rel="noreferrer">{pro?.button?.follow}</a></span>
                                     ) : (
                                         <RichText
                                             tagName="span"
@@ -164,7 +164,7 @@ const ProfileCard = ({ view, attributes, setAttributes, pro, index }) => {
                                 {/* Message Button */}
                                 <button className="action-btn secondary">
                                     {view ? (
-                                        <span>{pro?.button?.message}</span>
+                                        <span><a  className='buttonLink'  target="_blank" href={pro?.link?.message} rel="noreferrer">{pro?.button?.message}</a></span>
                                     ) : (
                                         <RichText
                                             tagName="span"

@@ -549,7 +549,12 @@ const ProfileCard = ({
     className: "actions"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: "action-btn primary"
-  }, view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, pro?.button?.follow) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+  }, view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    className: "buttonLink",
+    href: pro?.button?.follow,
+    target: "_blank",
+    rel: "noreferrer"
+  }, pro?.button?.follow)) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     tagName: "span",
     value: pro?.button?.follow,
     placeholder: "Enter button text...",
@@ -558,7 +563,12 @@ const ProfileCard = ({
     className: "btn-effect"
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: "action-btn secondary"
-  }, view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, pro?.button?.message) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+  }, view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    className: "buttonLink",
+    target: "_blank",
+    href: pro?.link?.message,
+    rel: "noreferrer"
+  }, pro?.button?.message)) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     tagName: "span",
     value: pro?.button?.message,
     placeholder: "Enter button text...",

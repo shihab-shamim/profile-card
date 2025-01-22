@@ -234,23 +234,67 @@ label='Add Skill'
   }}
   
 />
-<label>Button Section</label>
-<div style={{display:"flex",gap:"2px"}}>
+<Flex align="center" justify='center' gap={2}>
+    <FormToggle
+    
+    checked={pro?.isShow}
+    onChange={() => {
+      const updatedProfile = [...profile];
+      updatedProfile[index] = {
+          ...updatedProfile[index],
+          isShow: !updatedProfile[index].isShow, 
+      };
+
+      setAttributes({
+          profile: updatedProfile,
+      });
+  }}
+  />
+ <label>Show Profile Button {isShow}</label>
+    </Flex> 
+{pro?.isShow && <label>Button Section</label>}
+{
+ pro?.isShow &&  <>
+  <div style={{display:"flex",gap:"2px"}}>
 <InputControl
 	
 	labelPosition="top"
 	value={pro?.button.follow}
 	type="text"
-	isPressEnterToChange
-	onChange={ ( nextValue ) => console.log(nextValue) }
+	onChange={(nextValue) => {
+    const updatedProfile = [...profile];
+    updatedProfile[index] = {
+        ...updatedProfile[index],
+        button: {
+            ...updatedProfile[index].button,
+            follow: nextValue,
+        },
+    };
+
+    setAttributes({
+        profile: updatedProfile,
+    });
+}}
 />
 <InputControl
 	
 	labelPosition="top"
 	value={pro?.link.follow}
 	type="text"
-	isPressEnterToChange
-	onChange={ ( nextValue ) => console.log(nextValue) }
+	onChange={(nextValue) => {
+    const updatedProfile = [...profile];
+    updatedProfile[index] = {
+        ...updatedProfile[index],
+        link: {
+            ...updatedProfile[index].button,
+            follow: nextValue,
+        },
+    };
+
+    setAttributes({
+        profile: updatedProfile,
+    });
+}}
 />
 </div>
 
@@ -297,6 +341,8 @@ label='Add Skill'
 }}
 />
 </div>
+  </>
+}
 
 <Flex justify='space-between'>
 <Button
@@ -383,7 +429,12 @@ label='Add Skill'
       button: {
         follow: "Follow",
         message: "Message"
-      }
+      },
+      isShow:true,
+					link:{
+						follow:"https://www.facebook.com/Shihab.shamim.2024",
+						message:"https://www.linkedin.com/in/shihabshamim/"
+					}
     };
 
     // Ensure profile is treated as an array and add the new card
@@ -395,14 +446,7 @@ label='Add Skill'
   Add Card
 </Button>
 
-<Flex align="center" justify='center' gap={2}>
-    <FormToggle
-    
-    checked={ isShow }
-    onChange={ () => setAttributes({isShow:!isShow}) }
-  />
-  <label>Show Profile Button {isShow}</label>
-    </Flex> 
+
     
 
     </>

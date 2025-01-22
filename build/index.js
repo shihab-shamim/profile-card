@@ -773,7 +773,23 @@ const General = ({
         profile: updatedProfile
       });
     }
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Button Section"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Flex, {
+    align: "center",
+    justify: "center",
+    gap: 2
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FormToggle, {
+    checked: pro?.isShow,
+    onChange: () => {
+      const updatedProfile = [...profile];
+      updatedProfile[index] = {
+        ...updatedProfile[index],
+        isShow: !updatedProfile[index].isShow
+      };
+      setAttributes({
+        profile: updatedProfile
+      });
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Show Profile Button ", isShow)), pro?.isShow && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Button Section"), pro?.isShow && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       display: "flex",
       gap: "2px"
@@ -782,14 +798,36 @@ const General = ({
     labelPosition: "top",
     value: pro?.button.follow,
     type: "text",
-    isPressEnterToChange: true,
-    onChange: nextValue => console.log(nextValue)
+    onChange: nextValue => {
+      const updatedProfile = [...profile];
+      updatedProfile[index] = {
+        ...updatedProfile[index],
+        button: {
+          ...updatedProfile[index].button,
+          follow: nextValue
+        }
+      };
+      setAttributes({
+        profile: updatedProfile
+      });
+    }
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalInputControl, {
     labelPosition: "top",
     value: pro?.link.follow,
     type: "text",
-    isPressEnterToChange: true,
-    onChange: nextValue => console.log(nextValue)
+    onChange: nextValue => {
+      const updatedProfile = [...profile];
+      updatedProfile[index] = {
+        ...updatedProfile[index],
+        link: {
+          ...updatedProfile[index].button,
+          follow: nextValue
+        }
+      };
+      setAttributes({
+        profile: updatedProfile
+      });
+    }
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     style: {
       display: "flex",
@@ -829,7 +867,7 @@ const General = ({
         profile: updatedProfile
       });
     }
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Flex, {
+  }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Flex, {
     justify: "space-between"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
     isSecondary: true,
@@ -892,6 +930,11 @@ const General = ({
         button: {
           follow: "Follow",
           message: "Message"
+        },
+        isShow: true,
+        link: {
+          follow: "https://www.facebook.com/Shihab.shamim.2024",
+          message: "https://www.linkedin.com/in/shihabshamim/"
         }
       };
 
@@ -900,16 +943,7 @@ const General = ({
         profile: Array.isArray(profile) ? [...profile, newProfileCard] : [newProfileCard]
       });
     }
-  }, "Add Card"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Flex, {
-    align: "center",
-    justify: "center",
-    gap: 2
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FormToggle, {
-    checked: isShow,
-    onChange: () => setAttributes({
-      isShow: !isShow
-    })
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Show Profile Button ", isShow)));
+  }, "Add Card"));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (General);
 
@@ -1428,7 +1462,12 @@ const ProfileCard = ({
     className: "actions"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: "action-btn primary"
-  }, view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, pro?.button?.follow) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+  }, view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    className: "buttonLink",
+    href: pro?.button?.follow,
+    target: "_blank",
+    rel: "noreferrer"
+  }, pro?.button?.follow)) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     tagName: "span",
     value: pro?.button?.follow,
     placeholder: "Enter button text...",
@@ -1437,7 +1476,12 @@ const ProfileCard = ({
     className: "btn-effect"
   })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: "action-btn secondary"
-  }, view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, pro?.button?.message) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+  }, view ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    className: "buttonLink",
+    target: "_blank",
+    href: pro?.link?.message,
+    rel: "noreferrer"
+  }, pro?.button?.message)) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
     tagName: "span",
     value: pro?.button?.message,
     placeholder: "Enter button text...",
