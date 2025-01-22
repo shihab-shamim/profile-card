@@ -39,6 +39,8 @@ $primaryColor: #4527a4;
 		width: 120px;
 		height: 120px;
 		margin: 0 auto 2rem;
+		border:5px solid #60a5fa;
+		border-radius: 50%;
 	}
 	
 	.avatar {
@@ -292,5 +294,7 @@ $primaryColor: #4527a4;
 	
 	
 
-	
+	#components-form-token-suggestions-howto-0{
+		display: none;
+	}
 }

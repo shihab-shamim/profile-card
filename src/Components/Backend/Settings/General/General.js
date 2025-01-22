@@ -8,7 +8,7 @@ import { TextareaControl } from '@wordpress/components';
 import { Button } from '@wordpress/components';
 import { FormTokenField } from '@wordpress/components';
 import { FormToggle } from '@wordpress/components';
-import { Flex,ButtonGroup } from '@wordpress/components';
+import { Flex,ButtonGroup ,__experimentalInputControl as InputControl} from '@wordpress/components';
 import { MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
 
 
@@ -234,6 +234,105 @@ label='Add Skill'
   }}
   
 />
+<label>Button Section</label>
+<div style={{display:"flex",gap:"2px"}}>
+<InputControl
+	
+	labelPosition="top"
+	value={pro?.button.follow}
+	type="text"
+	isPressEnterToChange
+	onChange={ ( nextValue ) => console.log(nextValue) }
+/>
+<InputControl
+	
+	labelPosition="top"
+	value={pro?.link.follow}
+	type="text"
+	isPressEnterToChange
+	onChange={ ( nextValue ) => console.log(nextValue) }
+/>
+</div>
+
+<div style={{display:"flex",gap:"2px"}}>
+<InputControl
+	
+	labelPosition="top"
+	value={pro?.button.message}
+	type="text"
+	onChange={(nextValue) => {
+    const updatedProfile = [...profile];
+    updatedProfile[index] = {
+        ...updatedProfile[index],
+        button: {
+            ...updatedProfile[index].button,
+            message: nextValue,
+        },
+    };
+
+    setAttributes({
+        profile: updatedProfile,
+    });
+}}
+/>
+<InputControl
+	
+	labelPosition="top"
+	value={pro?.link.message}
+	type="text"
+	onChange={(nextValue) => {
+    const updatedProfile = [...profile];
+    updatedProfile[index] = {
+        ...updatedProfile[index],
+        link: {
+            ...updatedProfile[index].button,
+            message: nextValue,
+        },
+    };
+
+    setAttributes({
+        profile: updatedProfile,
+    });
+    
+}}
+/>
+</div>
+
+<Flex justify='space-between'>
+<Button
+  isSecondary
+  onClick={() => {
+    const updatedProfile = profile.filter((_, i) => i !== index); 
+    
+    
+    setAttributes({
+      profile: updatedProfile,
+    });
+  }}
+>
+  Delete Card
+</Button>
+<Button
+  isPrimary
+  onClick={() => {
+    const copiedCard = profile[index]; // Get the card to copy
+    
+    // Create a new profile array with the copied card inserted after the selected index
+    const updatedProfile = [
+      ...profile.slice(0, index + 1), // Cards before the selected card
+      copiedCard,                     // Insert the copied card
+      ...profile.slice(index + 1),    // Cards after the selected card
+    ];
+
+    // Update the state with the new profile array
+    setAttributes({
+      profile: updatedProfile,
+    });
+  }}
+>
+  Copy Card
+</Button>
+</Flex>
 
 
 

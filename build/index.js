@@ -773,7 +773,91 @@ const General = ({
         profile: updatedProfile
       });
     }
-  }))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Button Section"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      display: "flex",
+      gap: "2px"
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalInputControl, {
+    labelPosition: "top",
+    value: pro?.button.follow,
+    type: "text",
+    isPressEnterToChange: true,
+    onChange: nextValue => console.log(nextValue)
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalInputControl, {
+    labelPosition: "top",
+    value: pro?.link.follow,
+    type: "text",
+    isPressEnterToChange: true,
+    onChange: nextValue => console.log(nextValue)
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      display: "flex",
+      gap: "2px"
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalInputControl, {
+    labelPosition: "top",
+    value: pro?.button.message,
+    type: "text",
+    onChange: nextValue => {
+      const updatedProfile = [...profile];
+      updatedProfile[index] = {
+        ...updatedProfile[index],
+        button: {
+          ...updatedProfile[index].button,
+          message: nextValue
+        }
+      };
+      setAttributes({
+        profile: updatedProfile
+      });
+    }
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.__experimentalInputControl, {
+    labelPosition: "top",
+    value: pro?.link.message,
+    type: "text",
+    onChange: nextValue => {
+      const updatedProfile = [...profile];
+      updatedProfile[index] = {
+        ...updatedProfile[index],
+        link: {
+          ...updatedProfile[index].button,
+          message: nextValue
+        }
+      };
+      setAttributes({
+        profile: updatedProfile
+      });
+    }
+  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Flex, {
+    justify: "space-between"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    isSecondary: true,
+    onClick: () => {
+      const updatedProfile = profile.filter((_, i) => i !== index);
+      setAttributes({
+        profile: updatedProfile
+      });
+    }
+  }, "Delete Card"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+    isPrimary: true,
+    onClick: () => {
+      const copiedCard = profile[index]; // Get the card to copy
+
+      // Create a new profile array with the copied card inserted after the selected index
+      const updatedProfile = [...profile.slice(0, index + 1),
+      // Cards before the selected card
+      copiedCard,
+      // Insert the copied card
+      ...profile.slice(index + 1) // Cards after the selected card
+      ];
+
+      // Update the state with the new profile array
+      setAttributes({
+        profile: updatedProfile
+      });
+    }
+  }, "Copy Card")))))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     className: "bPlPanelBody",
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Profile Cards LayOut', 'b-blocks'),
     initialOpen: false
@@ -1340,7 +1424,7 @@ const ProfileCard = ({
       updateProfileAtIndex('skills', updatedSkills);
     },
     placeholder: "skill..."
-  }))), isShow && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }))), pro?.isShow && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "actions"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: "action-btn primary"
@@ -1536,24 +1620,36 @@ __webpack_require__.r(__webpack_exports__);
 const iconColor = '#4527a4';
 const blockIcon = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
   xmlns: "http://www.w3.org/2000/svg",
-  width: 24,
-  height: 24,
-  viewBox: "0 0 20 20",
-  fill: iconColor
-}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-  fill: iconColor,
-  fillRule: "evenodd",
-  d: "M9.938 4.016a.146.146 0 00-.054.057L3.027 15.74a.176.176 0 00-.002.183c.016.03.037.05.054.06.015.01.034.017.066.017h13.713a.12.12 0 00.066-.017.163.163 0 00.055-.06.176.176 0 00-.003-.183L10.12 4.073a.146.146 0 00-.054-.057.13.13 0 00-.063-.016.13.13 0 00-.064.016zm1.043-.45a1.13 1.13 0 00-1.96 0L2.166 15.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L10.982 3.566z"
-}), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("rect", {
-  fill: iconColor,
-  width: "2",
-  height: "2",
-  x: "9.002",
-  y: "13",
-  rx: "1"
+  xmlSpace: "preserve",
+  width: "655.359",
+  height: "655.359",
+  style: {
+    shapeRendering: 'geometricPrecision',
+    textRendering: 'geometricPrecision',
+    imageRendering: 'optimizeQuality',
+    fillRule: 'evenodd',
+    clipRule: 'evenodd'
+  },
+  viewBox: "0 0 6.827 6.827"
+}, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("rect", {
+  width: "6.827",
+  height: "6.827",
+  rx: ".853",
+  ry: ".853",
+  style: {
+    fill: '#7e57c2'
+  }
 }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-  fill: iconColor,
-  d: "M9.1 7.995a.905.905 0 111.8 0l-.35 3.507a.553.553 0 01-1.1 0L9.1 7.995z"
+  d: "M1.573.853h2.502v1.072c0 .117.096.213.214.213H5.36v3.729a.107.107 0 0 1-.107.106h-3.68a.107.107 0 0 1-.106-.106V.96c0-.059.047-.107.106-.107zm1.173 2.73H4.08v.16H2.746v-.16zm.334-1.001a.482.482 0 0 0-.169.163.568.568 0 0 0-.086.303v.009c0 .037.014.071.036.096a.124.124 0 0 0 .094.045h.917c.037 0 .07-.017.094-.045a.148.148 0 0 0 .035-.096v-.009a.568.568 0 0 0-.084-.3.483.483 0 0 0-.169-.165.354.354 0 0 1-.072.1.377.377 0 0 1-.596-.101zm.333.148a.326.326 0 0 1-.319-.305.578.578 0 0 1-.003-.08c0-.122.039-.2.1-.25a.355.355 0 0 1 .221-.07l.008.001c.08.002.157.02.215.068.062.05.101.13.1.25a2.463 2.463 0 0 1-.002.08.335.335 0 0 1-.097.217.335.335 0 0 1-.22.089h-.003zM2.028 4.68h2.77v.16h-2.77v-.16zm0-.549h2.77v.16h-2.77v-.16z",
+  style: {
+    fill: '#fffffe'
+  }
+}), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+  d: "M4.289 2.031a.107.107 0 0 1-.107-.106V.96a.107.107 0 0 1 .183-.076l.964.964a.107.107 0 0 1-.076.182H4.29z",
+  style: {
+    fill: '#fffffe',
+    fillRule: 'nonzero'
+  }
 }));
 const verticalLineIcon = (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
   xmlns: "http://www.w3.org/2000/svg",
@@ -4160,7 +4256,7 @@ function castImmutable(value) {
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"b-blocks/test-purpose","version":"1.0.0","title":"profile card","category":"widgets","description":"Short description of the Test Purpose","keywords":["Test Purpose"],"textdomain":"b-blocks","attributes":{"alignment":{"type":"string","default":"center"},"profile":{"type":"array","default":[{"name":"Shihab Shamim","image":"https://i.ibb.co.com/4RBL613/1714662976645-2.jpg","designation":"Senior Product Designer","skills":["UI/UXL","Branding","Motion"],"description":"Creative designer with 5+ years of experience in digital product design and brand identity.","projects":"1.2k","followers":"8.5k","following":"4.5k","button":{"follow":"Follow","message":"Message"}}]},"isShow":{"type":"boolean","default":true},"cardStyle":{"type":"object","default":{"width":"400px","height":"700px"}},"cardBackground":{"type":"string","default":"#1e293b"},"CardBorder":{"type":"object","default":{"top":"24px","right":"24px","bottom":"24px","left":"24px"}},"profileImage":{"type":"object","default":{"width":"100%","height":"100%","top":"50%","right":"50%","bottom":"50%","left":"50%"}},"names":{"type":"object","default":{"size":"1.8rem","color":"linear-gradient(to right,#60a5fa,#a78bfa)"}},"description":{"type":"object","default":{"size":"1rem","color":"#94a3b8"}},"details":{"type":"object","default":{"size":"1rem","color":"linear-gradient(to right,#60a5fa,#a78bfa)"}},"designation":{"type":"object","default":{"size":"1.2rem","color":"#94a3b8"}},"skillses":{"type":"object","default":{"color":"#94a3b8","size":"0.9rem","bg":"rgba(255, 255, 255, 0.05)","borderRadius":"2rem"}},"skillsesBorder":{"type":"object","default":{"top":"32px","right":"32px","bottom":"32px","left":"32px"}},"skillsespadding":{"type":"object","default":{"top":"8px","right":"16px","bottom":"8px","left":"16px"}},"layout":{"type":"number","default":2}},"supports":{"align":["wide","full"],"html":false},"example":{"attributes":{}},"editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./view.css","render":"file:./render.php","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"b-blocks/test-purpose","version":"1.0.0","title":"profile card","category":"widgets","description":"Short description of the Test Purpose","keywords":["Test Purpose"],"textdomain":"b-blocks","attributes":{"alignment":{"type":"string","default":"center"},"profile":{"type":"array","default":[{"name":"Shihab Shamim","image":"https://i.ibb.co.com/4RBL613/1714662976645-2.jpg","designation":"Senior Product Designer","skills":["UI/UXL","Branding","Motion"],"description":"Creative designer with 5+ years of experience in digital product design and brand identity.","projects":"1.2k","followers":"8.5k","following":"4.5k","button":{"follow":"Follow","message":"Message"},"isShow":true,"link":{"follow":"https://www.facebook.com/Shihab.shamim.2024","message":"https://www.linkedin.com/in/shihabshamim/"}}]},"cardStyle":{"type":"object","default":{"width":"400px","height":"700px"}},"cardBackground":{"type":"string","default":"#1e293b"},"CardBorder":{"type":"object","default":{"top":"24px","right":"24px","bottom":"24px","left":"24px"}},"profileImage":{"type":"object","default":{"width":"100%","height":"100%","top":"50%","right":"50%","bottom":"50%","left":"50%"}},"names":{"type":"object","default":{"size":"1.8rem","color":"linear-gradient(to right,#60a5fa,#a78bfa)"}},"description":{"type":"object","default":{"size":"1rem","color":"#94a3b8"}},"details":{"type":"object","default":{"size":"1rem","color":"linear-gradient(to right,#60a5fa,#a78bfa)"}},"designation":{"type":"object","default":{"size":"1.2rem","color":"#94a3b8"}},"skillses":{"type":"object","default":{"color":"#94a3b8","size":"0.9rem","bg":"rgba(255, 255, 255, 0.05)","borderRadius":"2rem"}},"skillsesBorder":{"type":"object","default":{"top":"32px","right":"32px","bottom":"32px","left":"32px"}},"skillsespadding":{"type":"object","default":{"top":"8px","right":"16px","bottom":"8px","left":"16px"}},"layout":{"type":"number","default":2}},"supports":{"align":["wide","full"],"html":false},"example":{"attributes":{}},"editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./view.css","render":"file:./render.php","viewScript":"file:./view.js"}');
 
 /***/ })
 

@@ -545,7 +545,7 @@ const ProfileCard = ({
       updateProfileAtIndex('skills', updatedSkills);
     },
     placeholder: "skill..."
-  }))), isShow && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }))), pro?.isShow && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "actions"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: "action-btn primary"

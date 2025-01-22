@@ -142,7 +142,7 @@ const ProfileCard = ({ view, attributes, setAttributes, pro, index }) => {
                                 ))}
                         </div>
 
-                        {isShow && (
+                        {pro?.isShow && (
                             <div className="actions">
                                 {/* Follow Button */}
                                 <button className="action-btn primary">

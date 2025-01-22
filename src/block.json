@@ -30,15 +30,17 @@
 					"button":{
 						"follow":"Follow",
 						"message":"Message"	
+					},
+					"isShow":true,
+					"link":{
+						"follow":"https://www.facebook.com/Shihab.shamim.2024",
+						"message":"https://www.linkedin.com/in/shihabshamim/"
 					}
 					
 				}
 			]
 		},
-		"isShow":{
-			"type":"boolean",
-            "default":true
-		},
+		
 		"cardStyle":{
 			"type":"object",
 			"default":{

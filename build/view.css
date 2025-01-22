@@ -36,6 +36,8 @@
   width: 120px;
   height: 120px;
   margin: 0 auto 2rem;
+  border: 5px solid #60a5fa;
+  border-radius: 50%;
 }
 .wp-block-b-blocks-test-purpose .avatar {
   position: relative;
@@ -223,6 +225,9 @@
   .wp-block-b-blocks-test-purpose .skills {
     flex-wrap: wrap;
   }
+}
+.wp-block-b-blocks-test-purpose #components-form-token-suggestions-howto-0 {
+  display: none;
 }
 
 /*# sourceMappingURL=view.css.map*/
